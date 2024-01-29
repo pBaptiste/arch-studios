@@ -7,10 +7,12 @@ import heroTablet from '../assets/about/tablet/image-hero.jpg'
 import heroDesktop from '../assets/about/desktop/image-hero.jpg'
 import heritage from '../assets/about/desktop/image-heritage.jpg'
 import { leaders } from '../util/leaders'
+import PageName from '../components/PageName.astro';
 ---
 
 <Layout title="Arch Studio - About Us">
     <main class="min-h-screen">
+        <PageName name="About Us"/>
         <Banner 
         imgMobile={heroMobile}
         imgTablet={heroTablet}
