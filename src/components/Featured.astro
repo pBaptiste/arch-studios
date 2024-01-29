@@ -1,0 +1,29 @@
+---
+import PortfolioCard from "./PortfolioCard.astro"
+import BtnLink from "./BtnLink.astro"
+import { featuredPortfolios } from '../util/portfolios'
+---
+
+<section class="px-8 md:px-0 pb-[132px] md:pb-[200px] flex flex-col md:flex-row md:justify-between md:flex-wrap">
+    <h3 class="text-very-dark-blue text-5xl md:text-7xl font-bold leading-[3.25rem] md:leading-[4rem] tracking-[-1.714px] md:tracking-[-2px] mb-[43px] md:mb-0">Featured</h3>
+    <div class="grid xl:grid-cols-3 gap-6 xl:gap-[30px] mb-6 md:mb-0 md:order-3 md:basis-full">
+        {
+            featuredPortfolios.map((item, index) => (
+                <PortfolioCard 
+                    imgMobile={item.imgMobile}
+                    imgTablet={item.imgTablet}
+                    imgDesktop={item.imgDesktop}
+                    alt={item.title}
+                    title={item.title}
+                    info='View All Projects'
+                    link="/portfolio"
+                    number={index + 1}
+                />
+            ))
+        }
+    </div>
+    <div class="md:order-2 md:mb-[85px] xl:mb-[64px]">
+        <BtnLink label="See All" link="/portfolio" customStyle="w-full"/>
+    </div>
+    
+</section>

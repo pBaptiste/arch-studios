@@ -1,0 +1,10 @@
+---
+import { Image } from "astro:assets";
+import arrow from '../assets/icons/icon-arrow.svg'
+
+const { label, link, customStyle } = Astro.props;
+---
+<a href={link} class={`${customStyle} bg-very-dark-blue hover:bg-dark-grey focus:bg-dark-grey outline-none transition-colors duration-500 text-white text-[1.125rem] font-bold leading-[1.563rem] flex items-center justify-center gap-6 pt-[25px] pb-[22px] pl-[35.5px] pr-8`}>
+    {label}
+    <Image src={arrow} alt=''/>
+</a>

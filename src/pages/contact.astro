@@ -1,0 +1,154 @@
+---
+import { Icon } from 'astro-icon/components'
+import { Image } from 'astro:assets';
+import ResponsiveImage from '../components/ResponsiveImage.astro';
+import Layout from '../layouts/Layout.astro';
+import Banner from '../components/Banner.astro';
+import heroMobile from '../assets/contact/mobile/image-hero.jpg'
+import heroTablet from '../assets/contact/tablet/image-hero.jpg'
+import heroDesktop from '../assets/contact/desktop/image-hero.jpg'
+import mapMobile from '../assets/contact/mobile/image-map.png'
+import mapTablet from '../assets/contact/tablet/image-map.png'
+import mapDesktop from '../assets/contact/desktop/image-map.png'
+import arrow from '../assets/icons/icon-arrow.svg'
+---
+
+<Layout title="Arch Studio - Contact Us">
+    <main class="min-h-screen">
+        <Banner 
+        imgMobile={heroMobile}
+        imgTablet={heroTablet}
+        imgDesktop={heroDesktop}
+        heading="Contact"
+        title="Tell us about your project"
+        body="We’d love to hear more about your project. Please, leave a message below or give us a call. We have two offices, one in Texas and one in Tennessee. If you find yourself nearby, come say hello!"
+
+        />
+
+        <section class="px-8 md:px-0 mb-[71px] md:mb-[226px] xl:mb-[163px] flex flex-col lg:flex-row gap-10 xl:gap-0 xl:mt-[74px]">
+            <div class="xl:mr-[140px] relative">
+                <div class="w-[65px] h-[1px] bg-light-grey mb-[68px] lg:absolute lg:left-0 lg:top-[-68px]"></div>
+                <h2 class="text-very-light-blue text-5xl md:text-7xl font-bold leading-[3.25rem] md:leading-[4rem] tracking-[-1.714px] md:tracking-[-2px] max-w-[156px] md:max-w-[250px]">Contact Details</h2>
+            </div>
+            
+            <div class="flex flex-col md:flex-row lg:flex-col justify-between lg:justify-start xl:mr-[96px]">
+                <div>
+                    <h3 class="text-dark-grey text-lg font-bold leading-[2.188rem] mb-[14px]">Main Office</h3>
+                    <p class="text-dark-grey font-medium leading-6">Mail: archone@mail.com</p>
+                    <p class="text-dark-grey font-medium leading-6">Address: 1892 Chenoweth Drive TN</p>
+                    <p class="text-dark-grey font-medium leading-6">Phone: 123-456-3451</p>
+                </div>
+                
+                <a class="mt-[43px] flex items-center gap-6 text-very-dark-blue text-lg font-bold leading-[1.563rem]" href="#map">
+                        View on Map
+                        <Icon name='icon-arrow'/>
+                </a>
+            </div>
+
+            <div class="flex flex-col md:flex-row lg:flex-col justify-between lg:justify-start">
+                <div>
+                    <h3 class="text-dark-grey text-lg font-bold leading-[2.188rem] mb-[14px]">Office II</h3>
+                    <p class="text-dark-grey font-medium leading-6">Mail: archtwo@mail.com</p>
+                    <p class="text-dark-grey font-medium leading-6">Address: 5 Whittier Pl,</p>
+                    <p class="text-dark-grey font-medium leading-6">Phone: 832-123-4321</p>
+                </div>
+                
+                <a class="mt-[43px] flex items-center gap-6 text-very-dark-blue text-lg font-bold leading-[1.563rem]" href="#map">
+                        View on Map
+                        <Icon name='icon-arrow'/>
+                </a>
+            </div>
+        </section>
+
+        <div id="map" class="w-full mb-[73px] md:mb-[199px]">
+            <ResponsiveImage imgMobile={mapMobile} imgTablet={mapTablet} imgDesktop={mapDesktop}/>
+        </div>
+
+        <section class="px-8 md:px-0 mb-[132px] md:mb-[200px flex flex-col lg:flex-row lg:gap-[134px]">
+            <h2 class="text-very-dark-blue text-5xl md:text-7xl font-bold leading-[3.25rem] md:leading-[4rem] tracking-[-1.714px] md:tracking-[-2px] max-w-[160px] md:max-w-full lg:max-w-[246px] md:mb-[17px]">Connect with us</h2>
+            <form id="contact" action="" class="flex flex-col lg:flex-1">
+                <div class="border-b border-very-dark-blue pl-[34.49px] pt-[43px] lg:pt-0 pb-[21px] flex items-center justify-between">
+                    <input type="text" name="Name" placeholder="Name" id="name" class="text-very-dark-grey text-xl font-bold tracking-[-0.312px] placeholder:text-light-grey w-[60%] outline-none">
+                    <p class="hidden text-sm md:text-lg font-bold tracking-[-0.281px] text-red">Can’t be empty</p>
+                </div>
+                <div class="border-b border-very-dark-blue pl-[34.49px] pt-[43px] pb-[21px] flex items-center justify-between">
+                    <input type="text" name="Email" placeholder="Email" id="email" class="text-very-dark-grey text-xl font-bold tracking-[-0.312px] placeholder:text-light-grey w-[60%] outline-none">
+                    <p class="hidden text-sm md:text-lg font-bold tracking-[-0.281px] text-red">Can’t be empty</p>
+                    <p class="hidden text-sm md:text-lg font-bold tracking-[-0.281px] text-red">Please use a valid email address</p>
+                </div>
+                <div class="border-b border-very-dark-blue pl-[34.49px] pt-[43px] flex items-end justify-between">
+                    <textarea name="message" id="message" placeholder="Message" class="text-very-dark-grey text-xl font-bold tracking-[-0.312px] placeholder:text-light-grey w-[65%] xl:w-[80%] h-[92px] outline-none resize-none"></textarea>
+                    <p class="hidden text-sm md:text-lg mb-[17px] font-bold tracking-[-0.281px] text-red">Can’t be empty</p>
+                </div>
+                <button type="submit" aria-label="Submit contact form" class="w-20 h-20 bg-very-dark-blue hover:bg-opacity-70 focus:bg-opacity-70 transition duration-500 flex items-center justify-center self-end">
+                   <Image src={arrow} alt=''/>
+                </button>
+            </form>
+        </section>
+    </main>
+</Layout>
+
+<style>
+    .error {
+        border-bottom: 1px solid #DF5656;
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const nameInput = document.getElementById('name') as HTMLInputElement;
+        const emailInput = document.getElementById('email') as HTMLInputElement;
+        const messageArea = document.getElementById('message') as HTMLTextAreaElement;
+        const contactForm = document.getElementById('contact') as HTMLFormElement;
+
+        contactForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            function validateEmail(email : string) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                 return emailRegex.test(email);
+            }
+            
+            if(!nameInput.value.trim()) {
+                nameInput.parentElement?.classList.add('error');
+                nameInput.nextElementSibling?.classList.remove('hidden');
+            }
+            nameInput.addEventListener('input', () => {
+                nameInput.parentElement?.classList.remove('error');
+                nameInput.nextElementSibling?.classList.add('hidden');
+            })
+
+            if(!emailInput.value.trim()){
+                emailInput.parentElement?.classList.add('error');
+                emailInput.nextElementSibling?.classList.remove('hidden');
+            } else if(!validateEmail(emailInput.value.trim())){
+                emailInput.parentElement?.classList.add('error');
+                emailInput.parentElement?.querySelector(':last-child')?.classList.remove('hidden')
+            }
+            emailInput.addEventListener('input', () => {
+                emailInput.parentElement?.classList.remove('error');
+                emailInput.nextElementSibling?.classList.add('hidden');
+                emailInput.parentElement?.querySelector(':last-child')?.classList.add('hidden')
+            })
+
+            if(!messageArea.value.trim()){
+                messageArea.parentElement?.classList.add('error');
+                messageArea.nextElementSibling?.classList.remove('hidden');
+            }
+            messageArea.addEventListener('input', () => {
+                messageArea.parentElement?.classList.remove('error');
+                messageArea.nextElementSibling?.classList.add('hidden');
+            })
+
+            if(
+            nameInput.value.trim() &&
+            emailInput.value.trim() &&
+            validateEmail(emailInput.value.trim()) &&
+            messageArea.value.trim()
+            ){
+                alert("Thank You For Connecting With Us!");
+                window.location.reload()
+            }
+        })
+    })
+</script>

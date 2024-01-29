@@ -1,0 +1,23 @@
+---
+import ResponsiveImage from "./ResponsiveImage.astro";
+import BtnLink from "./BtnLink.astro";
+
+const { imgMobile, imgTablet, imgDesktop, title, desc } = Astro.props
+---
+
+<article class="relative slide-item xl:max-h-[720px] pt-[115px] md:pt-[186px] pb-[109px] md:pb-[177px] px-[31px] md:px-[58px] xl:pl-[190px] xl:pr-[376px]">
+    <div class="absolute w-full h-full top-0 left-0 bg-black bg-opacity-50 -z-[1]"></div>
+    <div class="absolute w-full h-full top-0 left-0 -z-10">
+        <ResponsiveImage 
+            imgMobile={imgMobile}
+            imgTablet={imgTablet}
+            imgDesktop={imgDesktop}
+        />
+    </div>
+    <div class="z-10">
+        <h1 class="text-white text-5xl md:text-8xl md:leading-[5rem] tracking-[-1.2px] md:tracking-[-2px] font-bold mb-3 max-w-[544px]">{title}</h1>
+        <p class="text-white text-[1.125rem] font-medium leading-6 mb-[82px] md:mb-[39px] max-w-[457px] xl:max-w-[445px]">{desc}</p>
+        <BtnLink label="See Our Portfolio" link="/portfolio" customStyle="w-fit"/>
+    </div>
+</article>
+

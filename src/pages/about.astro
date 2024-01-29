@@ -1,0 +1,59 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Banner from '../components/Banner.astro';
+import { Image } from 'astro:assets';
+import heroMobile from '../assets/about/mobile/image-hero.jpg'
+import heroTablet from '../assets/about/tablet/image-hero.jpg'
+import heroDesktop from '../assets/about/desktop/image-hero.jpg'
+import heritage from '../assets/about/desktop/image-heritage.jpg'
+import { leaders } from '../util/leaders'
+---
+
+<Layout title="Arch Studio - About Us">
+    <main class="min-h-screen">
+        <Banner 
+        imgMobile={heroMobile}
+        imgTablet={heroTablet}
+        imgDesktop={heroDesktop}
+        heading="About"
+        title="Your team of professionals"
+        body="Our small team of world-class professionals will work with you every step of the way. Strong relationships are at the core of everything we do. This extends to the relationship our projects have with their surroundings."
+        />
+
+        <section class="flex flex-row justify-between gap-6 px-8 md:px-0 mb-[112px] md:mb-[231px]">
+            <div>
+                <div class="w-[65px] h-[1px] bg-light-grey mb-[68px] md:mb-[50px] xl:mb-[83px]"></div>
+                <h1 class="text-very-dark-blue text-5xl md:text-7xl font-bold leading-[3.25rem] md:leading-[4rem] tracking-[-1.714px] md:tracking-[-2px] max-w-[170px] md:max-w-[270px] mb-[22px] md:mb-[62px] xl:mb-[51px]">Our Heritage</h1>
+                <p class="text-dark-grey text-[1.125rem] font-medium leading-6 lg:max-w-[446px] lg:min-w-[350px]">Founded in 2007, we started as a trio of architects. Our complimentary skills and relentless attention to detail turned Arch into one of the most sought after boutique firms in the country.<br/><br/>
+                    Speciliazing in Urban Design allowed us to focus on creating exceptional structures that live in harmony with their surroundings. We consider every detail from every surrounding element to inform our designs. <br/><br/>
+                    Our small team of world-class professionals provides input on every project.
+                </p>
+            </div>
+                
+            
+            <div class="hidden lg:block max-w-[540px] max-h-[568px]">
+                <Image src={heritage} alt='' class='w-full h-full object-cover'/>
+            </div>  
+        </section>
+
+        <section class="mb-[171px] md:mb-[239px] xl:mb-[159px] px-8 md:px-0 flex flex-col lg:flex-row lg:justify-between items-start">
+            <h2 class="text-very-dark-blue text-5xl xl:text-7xl font-bold leading-[3.25rem] tracking-[-1.714px] max-w-[170px] mb-[55px]">The Leaders</h2>
+            <div class="grid min-[574px]:grid-cols-2 gap-y-[79px] md:gap-y-[103px] min-[574px]:gap-x-[11px]">
+            {
+                leaders.map(item => (
+                    <div>
+                       <div class="w-full mb-[15px]">
+                            <Image src={item.avatar} alt={`Avatar of ${item.name}`} class='w-full h-full object-cover'/>
+                        </div>
+                        <div>
+                            <h3 class="text-very-dark-blue text-[2rem] font-bold leading-10">{item.name}</h3>
+                            <p class="text-very-dark-blue text-lg font-medium leading-6">{item.position}</p>
+                        </div>
+                    </div>
+                ))
+            }
+            </div>
+        </section>
+
+    </main>
+</Layout>

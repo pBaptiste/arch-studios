@@ -1,0 +1,24 @@
+---
+import ResponsiveImage from "./ResponsiveImage.astro"
+
+const {imgMobile, imgTablet, imgDesktop, heading, title, body } = Astro.props
+---
+
+<section class="relative flex md:justify-end pt-[195px] md:pt-[289px] xl:pt-[217px] md:mb-[200px]">
+    <div class="absolute w-full xl:max-w-[635px] md:h-full top-0 left-0 -z-30">
+        <ResponsiveImage 
+            imgMobile={imgMobile}
+            imgTablet={imgTablet}
+            imgDesktop={imgDesktop}
+            alt="Page Banner"
+        />
+        <div class="absolute w-full h-full top-0 left-0 bg-black bg-opacity-35 -z-10"></div>
+    </div>
+    
+    <div class="relative pt-5 md:pt-[88px] xl:pt-[160px] pl-8 md:pl-[59px] xl:pl-[182px] pb-[76px] md:pb-0 bg-white md:border-r-[2px] md:border-white max-w-[91.46%] md:max-w-[89.86%] xl:max-w-[56.57%] z-10">
+        <h1 class="hidden md:block absolute top-[-90px] right-0 text-very-light-grey text-[7.5rem] xl:text-[15.625rem] font-bold leading-[12.5rem] tracking-[3px] xl:tracking-[-4px]">{heading}</h1>
+        <div class="hidden md:block w-[65px] h-[1px] bg-light-grey mb-[73px] xl:mb-[58px]"></div>
+        <h2 class="text-very-dark-blue text-5xl md:text-7xl font-bold leading-[3.25rem] md:leading-[4rem] tracking-[-1.2px] md:tracking-[-2px] mb-[21px] md:mb-[43px] xl:mb-[58px]">{title}</h1>
+        <p class="text-dark-grey text-[1.125rem] font-medium leading-6">{body}</p>
+    </div>
+</section>

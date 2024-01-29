@@ -1,0 +1,85 @@
+---
+import HeroBanner from "./HeroBanner.astro";
+import { slideShowItems } from '../util/slideshow'
+---
+
+<section class="relative">
+    {
+        slideShowItems.map(item => (
+            <HeroBanner 
+                imgMobile={item.imgMobile}
+                imgTablet={item.imgTablet}
+                imgDesktop={item.imgDesktop}
+                title={item.title}
+                desc={item.desc}
+            />
+        ))
+    }
+    <div class="hidden xl:block absolute bottom-0 left-[-80px] z-30">
+        { 
+            slideShowItems.map((_, index) => (
+                <button class="m-auto w-20 h-20 bg-white text-medium-grey hover:bg-very-light-grey focus:bg-very-light-grey transition-colors duration-300 outline-none text-[1.125rem] font-bold leading-[1.563rem]">0{index + 1}</button>
+            ))
+        }
+    </div>
+</section>
+
+<style>
+    .active {
+        background-color: #1B1D23;
+        color: #fff;
+    }
+</style>
+
+<script>
+    import anime from 'animejs/lib/anime.es.js';
+
+    window.addEventListener('load', () => {
+        //DOM ELEMENTS 
+        const slideBtns = document.querySelectorAll('button');
+        //STATE 
+        let index = 1;
+
+        slideBtns[index].classList.add('active');
+
+        slideBtns.forEach(btn => {
+             btn.addEventListener('click', () => {
+                index = parseInt(btn.textContent as string)
+                slideBtns.forEach(item => {item.classList.remove('active')})
+                slideBtns[index].classList.add('active');
+                showSlide(index)
+                anime({
+                    targets: '.slide-item',
+                    translateX: ['-50%', 0],
+                    opacity: [.6, 1],
+                    duration: 500,
+                    easing: 'linear'
+                });
+             })
+        })
+
+        function showSlide(number: number) {
+            const slideItems = document.getElementsByClassName('slide-item');
+
+            //Go to the first slide
+            if(number > slideItems.length) {
+                number = 1;
+            }
+
+            //Go to the final slide
+            if( number < 1) {
+                number = slideItems.length
+            }
+
+            for( let i = 0; i < slideItems.length; i++) {
+                const item = slideItems[i] as HTMLElement;
+                item.style.display = 'none'
+            }
+
+            const currentSlideItem = slideItems[index - 1] as HTMLElement;
+            currentSlideItem.style.display = 'block' 
+        }
+        
+        showSlide(index);
+    })
+</script>

@@ -1,0 +1,81 @@
+---
+import { Image } from "astro:assets";
+import logo from '../assets/logo.svg';
+import hamburger from '../assets/icons/icon-hamburger.svg'
+import close from '../assets/icons/icon-close.svg'
+import MobileMenu from '../components/MobileMenu.astro'
+import { navItems } from '../util/navigation'
+
+---
+
+<header class="">
+    <nav class="p-8 md:py-14 md:px-0 flex items-center justify-between md:justify-start md:gap-[78.84px]">
+        <!-- LOGO -->
+        <a href="/" aria-label="Go To The Arch Studio Home Page" class="outline-very-dark-blue">
+            <Image src={logo} alt='Arch Studio Logo' class='w-[77px] md:w-[96px] h-8 md:h-10'/>
+        </a>
+        <!-- MOBILE MENU BUTTON -->
+        <button id="mobile-btn" class="md:hidden" aria-label="Open and Close Mobile Menu">
+            <Image id='hamburger' src={hamburger} alt='' class=''/>
+            <Image id='close' src={close} alt='' class='hidden'/>
+        </button>
+        <!-- PAGE NAVIGATION LINKS -->
+        <ul class="hidden md:flex gap-[61px]">
+            {
+                navItems.map(item => (
+                    <li>
+                        <a class="text-medium-grey hover:text-very-dark-blue focus:text-very-dark-blue outline-none text-[1.125rem] font-bold leading-[1.563rem]" href={item.link}>{item.label}</a>
+                    </li>
+                ))
+            }
+        </ul>
+    </nav>
+
+    <style>
+       .active {
+            color: #1B1D23; 
+            position: relative;
+        }
+
+        .active::after {
+        content: "";
+        display: block;
+        width: 24px;
+        position: absolute;
+        bottom: -10px;
+        right: 16px;
+        border-bottom: 1px solid #1B1D23;
+        }
+    </style>
+
+    <!-- MOBILE MENU -->
+    <div class="md:hidden">
+        <MobileMenu />
+    </div>
+</header>
+
+<script>
+    
+    window.addEventListener('DOMContentLoaded', () => {
+        const menuBtn = document.getElementById('mobile-btn') as HTMLButtonElement;
+        const mobileMenu = document.getElementById('mobile-menu') as HTMLElement;
+        const hamburgerIcon = document.getElementById('hamburger') as HTMLImageElement;
+        const closeIcon = document.getElementById('close') as HTMLImageElement;
+        const body = document.body;
+        const currentPage = window.location.pathname
+        const navLinks = document.querySelectorAll('ul li a')
+
+        menuBtn.addEventListener('click', () => {
+            const isMobileMenuVisible = mobileMenu.classList.toggle('hidden');
+            hamburgerIcon.classList.toggle('hidden');
+            closeIcon.classList.toggle('hidden');
+            body.style.overflow = !isMobileMenuVisible ? 'hidden' : '';
+        })
+
+        navLinks.forEach(link => {
+            if(link.getAttribute('href') === currentPage) {
+                link.classList.add('active');
+            }
+        })
+    })
+</script>

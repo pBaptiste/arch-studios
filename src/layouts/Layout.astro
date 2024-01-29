@@ -1,0 +1,60 @@
+---
+import '@fontsource-variable/league-spartan';
+
+import 'animate.css';
+
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Arch Studios." />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body>
+		<div class="w-full md:max-w-[74.61%] xl:max-w-[77.1%] mx-auto relative">
+			<Nav />
+		<slot />
+		</div>
+		<Footer />
+		
+	</body>
+</html>
+<style is:global>
+	html {
+		font-family: 'League Spartan Variable', sans-serif;
+		background: #fff;
+	}
+
+	.animate__animated.animate__slideInLeft {
+  		--animate-duration: .8s;
+		  
+	}
+
+	.animate__animated.animate__fadeInLeft {
+  		--animate-duration: .5s;
+	}
+</style>
+
+<script>
+	import anime from 'animejs/lib/anime.es.js';
+	 anime({
+                    targets: 'body',
+                    opacity: [.7, 1],
+                    duration: 600,
+                    easing: 'easeInQuad'
+            });
+	 
+</script>

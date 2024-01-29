@@ -1,0 +1,54 @@
+---
+import { Image } from 'astro:assets';
+import ResponsiveImage from '../components/ResponsiveImage.astro';
+import PageName from '../components/PageName.astro';
+import BtnLink from '../components/BtnLink.astro';
+import Layout from '../layouts/Layout.astro';
+import HeroSlideShow from '../components/HeroSlideShow.astro';
+import Featured from '../components/Featured.astro';
+import welcomeImg from '../assets/home/desktop/image-welcome.jpg';
+import smallTeamMobile from '../assets/home/mobile/image-small-team.jpg';
+import smallTeamTablet from '../assets/home/tablet/image-small-team.jpg';
+import smallTeamDesktop from '../assets/home/desktop/image-small-team.jpg';
+---
+
+<Layout title="Arch Studio">
+	<main class="min-h-screen">
+
+		<!-- <PageName name="Portfolio"/> -->
+
+		<HeroSlideShow />
+
+		<section class="relative pt-[72px] md:pt-[92px] xl:pt-[195px] px-8 md:px-0 pb-[113px] md:pb-[233px] xl:pb-[200px] xl:flex xl:justify-end xl:gap-[125px] xl:items-end">
+			<div class="w-[65px] h-[1px] bg-light-grey mb-[68px] md:hidden"></div>
+			<p class="hidden md:block text-very-light-grey text-[7.5rem] xl:text-[15.625rem] leading-none tracking-[3px] xl:tracking-[-5px] font-bold xl:absolute xl:top-[85px] xl:left-0">Welcome</p>
+			<div>
+				<h2 class="text-very-dark-blue text-5xl md:text-7xl font-bold leading-[3.25rem] md:leading-[4rem] tracking-[-1.714px] md:tracking-[-2px] mb-[22px] md:mb-[43px] md:max-w-[446px] xl:pb-1">Welcome to Arch Studio</h2>
+				<p class="text-dark-grey text-[1.125rem] font-medium leading-6 xl:max-w-[446px]">We have a unique network and skillset to help bring your projects to life. Our small team of highly skilled individuals combined with our large network put us in a strong position to deliver exceptional results.<br/><br/>
+				Over the past 10 years, we have worked on all kinds of projects. From stations to high-rise buildings, we create spaces that inspire and delight.<br/><br/>
+				We work closely with our clients so that we understand the intricacies of each project. This allows us to work in harmony the surrounding area to create truly stunning projects that will stand the test of time.
+				</p>
+			</div>
+			
+			<Image src={welcomeImg} alt='' width={350} height={568} class='hidden xl:block'/>
+		</section>
+
+		<section class="w-full relative py-[180.5px] md:py-[167.5px] px-8 md:px-[58px] xl:px-[190px] mb-[73px] md:mb-[200px]">
+			<div class="absolute w-full h-full top-0 left-0 -z-10">
+				<ResponsiveImage 
+				imgMobile={smallTeamMobile}
+				imgTablet={smallTeamTablet}
+				imgDesktop={smallTeamDesktop}
+				alt=""/>
+			</div>
+			<div class="absolute w-full h-full top-0 left-0 bg-black bg-opacity-50 -z-[1]"></div>
+			<div class="z-10">
+				<h2 class="text-white text-5xl md:text-7xl leading-[3.25rem] md:leading-[4rem] tracking-[-1.714px] md:tracking-[-2px] font-bold mb-5 max-w-[300px] md:max-w-[445px]">Small team, big ideas</h2>
+				<BtnLink label="About Us" link="/about" customStyle="w-fit"/>
+			</div>
+		</section>
+
+		<Featured />
+	</main>
+</Layout>
+
